@@ -20,7 +20,6 @@ class LoginPage extends Component
         if (Auth::attempt(['username' => $this->username, 'password' => $this->password])) {
             session()->regenerate();
             
-            // Cek apakah user punya shift aktif
             if (Auth::user()->activeShift()->exists()) {
                 return redirect()->route('pos.index');
             }
